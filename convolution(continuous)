@@ -1,0 +1,193 @@
+close all
+clearvars
+
+%homework1 question3
+ 
+t=-9:0.1:11;
+%for every number in array t, we assign its function output
+for p=1:length(t)
+    result(p)=signal_function(t(p));
+end
+
+th=-9:0.1:11;
+%for every number in array th, we assign its function output
+%Also we determine the a value
+for p=1:length(th)
+    resulth(p)=h(th(p),-5);
+end
+
+% convolution
+r=length(result);
+s=length(resulth);
+%the length of the list X and H should match 
+X=[result,zeros(1,s)]; %r+s
+H=[resulth,zeros(1,r)];%s+r
+for p=1:s+r-1
+    %Y is the output signal, we assign 
+    
+    for m=1:r+s
+        if(p-m+1>0)
+            aa(m)=X(m)*H(p-m+1);
+            %i tried to assign the multiplication values of every x(m) and H(p-m+1) for the current p    
+        else
+        %Then for the current p, I tried to add all values of aa (all
+        %multiplications) and assign the addition as the total value for
+        %that current p
+        Y(p)=trapz(aa);
+        end
+    end
+end
+
+list=-18:0.1:22; %%list length for Y, it is used for fixing the index 0
+% plot results
+figure;
+subplot(2,1,1); plot(t,result); xlabel('n');ylabel('x[n]'); grid on;
+
+subplot(2,1,2); plot(th,resulth);xlabel('n'); ylabel('h_5[n]'); grid on;
+figure
+plot(list,Y);ylabel('Y[n]'); xlabel('----->n'); grid on;
+title('Convolution of x[n] and h_5[n]');
+
+% ========================================================
+
+%same for when a is 10
+th=-9:0.1:11;
+for p=1:length(th)
+    resulth(p)=h(th(p),10);
+end
+
+
+r=length(result);
+s=length(resulth);
+X=[result,zeros(1,s)];
+H=[resulth,zeros(1,r)];
+for p=1:s+r-1
+    %Y is the output signal, we assign 
+    
+    for m=1:r+s
+        if(p-m+1>0)
+            aa(m)=X(m)*H(p-m+1);
+            %i tried to assign the multiplication values of every x(m) and H(p-m+1) for the current p    
+        else
+        %Then for the current p, I tried to add all values of aa (all
+        %multiplications) and assign the addition as the total value for
+        %that current p
+        Y(p)=trapz(aa);
+        end
+    end
+end
+
+figure;
+subplot(2,1,1); plot(t,result); xlabel('n');ylabel('x[n]'); grid on;
+
+subplot(2,1,2); plot(th,resulth);xlabel('n'); ylabel('h10[n]'); grid on;
+figure
+plot(list,Y);ylabel('Y[n]'); xlabel('----->n'); grid on;
+title('Convolution of x[n] and h10[n]');
+
+% ========================================================
+
+%same for when a is 3
+th=-9:0.1:11;
+for p=1:length(th)
+    resulth(p)=h(th(p),3);
+end
+
+r=length(result);
+s=length(resulth);
+X=[result,zeros(1,s)];
+H=[resulth,zeros(1,r)];
+for p=1:s+r-1
+    %Y is the output signal, we assign 
+    
+    for m=1:r+s
+        if(p-m+1>0)
+            aa(m)=X(m)*H(p-m+1);
+            %i tried to assign the multiplication values of every x(m) and H(p-m+1) for the current p    
+        else
+        %Then for the current p, I tried to add all values of aa (all
+        %multiplications) and assign the addition as the total value for
+        %that current p
+        Y(p)=trapz(aa);
+        end
+    end
+end
+
+figure;
+subplot(2,1,1); plot(t,result); xlabel('n');ylabel('x[n]'); grid on;
+
+subplot(2,1,2); plot(th,resulth);xlabel('n'); ylabel('h3[n]'); grid on;
+figure
+plot(list,Y);ylabel('Y[n]'); xlabel('----->n'); grid on;
+title('Convolution of x[n] and h3[n]');
+
+% ========================================================
+
+%same for when a is 0
+th=-9:0.1:11;
+for p=1:length(th)
+    resulth(p)=h(th(p),0);
+end
+
+r=length(result);
+s=length(resulth);
+X=[result,zeros(1,s)];
+H=[resulth,zeros(1,r)];
+for p=1:s+r-1
+    %Y is the output signal, we assign 
+    
+    for m=1:r+s
+        if(p-m+1>0)
+            aa(m)=X(m)*H(p-m+1);
+            %i tried to assign the multiplication values of every x(m) and H(p-m+1) for the current p    
+        else
+        %Then for the current p, I tried to add all values of aa (all
+        %multiplications) and assign the addition as the total value for
+        %that current p
+        Y(p)=trapz(aa);
+        end
+    end
+end
+
+figure;
+subplot(2,1,1); plot(t,result); xlabel('n');ylabel('x[n]'); grid on;
+
+subplot(2,1,2); plot(th,resulth);xlabel('n'); ylabel('h0[n]'); grid on;
+figure
+plot(list,Y);ylabel('Y[n]'); xlabel('----->n'); grid on;
+title('Convolution of x[n] and h0[n]');
+
+% ========================================================
+
+%%the functions:
+%resulth calculates the impulse response when a values are changed
+%result calculates the signal x
+function resulth= h(n,a)
+if (a<0)
+    if (n <= 0)&&(n >= a)
+        resulth = 1;
+    else
+        resulth = 0;
+    end
+else
+    if (n >= 0)&&(n <= a)
+        resulth = 1;
+    else
+        resulth = 0;
+    end
+end
+end
+
+
+
+function result= signal_function(x)
+    if (x <= -1)&&(x >= -5)
+        result = x+4;
+    elseif (x < 2)&&(x > -1)
+        result = 3;
+    elseif (x >= 2)&&(x <= 5)
+        result = 7-2.*x;
+    else
+        result = 0;
+    end
+end
