@@ -1,0 +1,518 @@
+close all
+
+t=0:0.01:65;
+k=1:3;
+
+%%For the given time interval
+for a = 1:length(t)
+    a_0=63./26;
+    Y(a)=0; 
+    
+for ka = 1:length(k)
+    T= 0:0.01:13;
+    for Ta = 1:length(T)
+      akk(Ta)=Coefficientak(k(ka),T(Ta)); %%To find ak coefficient I created a list
+    end
+    akka=trapz(T,akk);  %%I added every member on the list to find the ak for given k
+    for Tb = 1:length(T) %%I did the same for bk
+      bkk(Tb)=Coefficientbk(k(ka),T(Tb));
+    end
+    bkkb=trapz(T,bkk);
+    Fourier=fourierTransform(k(ka),t(a),akka,bkkb);
+    Y(a)=Y(a)+Fourier; %%Y(a) represents the value of all k sum for current t
+end
+    Y(a)=Y(a)+2.*a_0; %%Y is the list of values for every t
+end
+
+%%From  q1
+t1=0:0.01:12.99;
+t2=13:0.01:25.99;
+t3=26:0.01:38.99;
+t4=39:0.01:51.99;
+t5=52:0.01:64.99;
+
+
+for p=1:length(t1)
+    resultaa(p)=periodic_function(t1(p),0);
+end
+
+figure
+plot(t1,resultaa)
+hold on
+plot(t2,resultaa)
+hold on
+plot(t3,resultaa)
+hold on
+plot(t4,resultaa)
+hold on
+plot(t5,resultaa)
+grid on
+hold on
+plot(t,Y)
+
+ylabel('Y'); xlabel('t'); grid on;
+title('Fourier Expansion of s(t), k=3');
+
+
+% ========================================================
+
+t=0:0.01:65;
+k=1:5;
+
+for a = 1:length(t)
+    a_0=63./26;
+    Y(a)=0;
+    
+for ka = 1:length(k)
+    T= 0:0.01:13;
+    for Ta = 1:length(T)
+    akk(Ta)=Coefficientak(k(ka),T(Ta));
+    end
+    akka=trapz(T,akk);
+    for Tb = 1:length(T)
+    bkk(Tb)=Coefficientbk(k(ka),T(Tb));
+    end
+    bkkb=trapz(T,bkk);
+    Fourier=fourierTransform(k(ka),t(a),akka,bkkb);
+    Y(a)=Y(a)+Fourier;
+end
+    Y(a)=Y(a)+2.*a_0;
+end
+
+t1=0:0.01:12.99;
+t2=13:0.01:25.99;
+t3=26:0.01:38.99;
+t4=39:0.01:51.99;
+t5=52:0.01:64.99;
+
+
+for p=1:length(t1)
+    resultaa(p)=periodic_function(t1(p),0);
+end
+
+figure
+plot(t1,resultaa)
+hold on
+plot(t2,resultaa)
+hold on
+plot(t3,resultaa)
+hold on
+plot(t4,resultaa)
+hold on
+plot(t5,resultaa)
+grid on
+hold on
+plot(t,Y)
+
+ylabel('Y'); xlabel('t'); grid on;
+title('Fourier Expansion of s(t), k=5');
+
+
+% ========================================================
+
+t=0:0.01:65;
+k=1:10;
+
+for a = 1:length(t)
+    a_0=63./26;
+    Y(a)=0;
+    
+for ka = 1:length(k)
+    T= 0:0.01:13;
+    for Ta = 1:length(T)
+    akk(Ta)=Coefficientak(k(ka),T(Ta));
+    end
+    akka=trapz(T,akk);
+    for Tb = 1:length(T)
+    bkk(Tb)=Coefficientbk(k(ka),T(Tb));
+    end
+    bkkb=trapz(T,bkk);
+    Fourier=fourierTransform(k(ka),t(a),akka,bkkb);
+    Y(a)=Y(a)+Fourier;
+end
+    Y(a)=Y(a)+2.*a_0;
+end
+
+t1=0:0.01:12.99;
+t2=13:0.01:25.99;
+t3=26:0.01:38.99;
+t4=39:0.01:51.99;
+t5=52:0.01:64.99;
+
+
+for p=1:length(t1)
+    resultaa(p)=periodic_function(t1(p),0);
+end
+
+figure
+plot(t1,resultaa)
+hold on
+plot(t2,resultaa)
+hold on
+plot(t3,resultaa)
+hold on
+plot(t4,resultaa)
+hold on
+plot(t5,resultaa)
+grid on
+hold on
+plot(t,Y)
+
+ylabel('Y'); xlabel('t'); grid on;
+title('Fourier Expansion of s(t), k=10');
+
+
+% ========================================================
+
+t=0:0.01:65;
+k=1:50;
+
+for a = 1:length(t)
+    a_0=63./26;
+    Y(a)=0;
+    
+for ka = 1:length(k)
+    T= 0:0.01:13;
+    for Ta = 1:length(T)
+    akk(Ta)=Coefficientak(k(ka),T(Ta));
+    end
+    akka=trapz(T,akk);
+    for Tb = 1:length(T)
+    bkk(Tb)=Coefficientbk(k(ka),T(Tb));
+    end
+    bkkb=trapz(T,bkk);
+    Fourier=fourierTransform(k(ka),t(a),akka,bkkb);
+    Y(a)=Y(a)+Fourier;
+end
+    Y(a)=Y(a)+2.*a_0;
+end
+
+t1=0:0.01:12.99;
+t2=13:0.01:25.99;
+t3=26:0.01:38.99;
+t4=39:0.01:51.99;
+t5=52:0.01:64.99;
+
+
+for p=1:length(t1)
+    resultaa(p)=periodic_function(t1(p),0);
+end
+
+figure
+plot(t1,resultaa)
+hold on
+plot(t2,resultaa)
+hold on
+plot(t3,resultaa)
+hold on
+plot(t4,resultaa)
+hold on
+plot(t5,resultaa)
+grid on
+hold on
+plot(t,Y)
+
+ylabel('Y'); xlabel('t'); grid on;
+title('Fourier Expansion of s(t), k=50');
+
+
+% ========================================================
+clear all
+
+t=0:0.01:20;
+k=1:3;
+
+for a = 1:length(t)
+    a_0=1./2;
+    Y(a)=0;
+    
+for ka = 1:length(k)
+    T= 0:0.01:4;
+    for Ta = 1:length(T)
+    akk(Ta)=tCoefficientak(k(ka),T(Ta));
+    end
+    akka=trapz(T,akk);
+    for Tb = 1:length(T)
+    bkk(Tb)=tCoefficientbk(k(ka),T(Tb));
+    end
+    bkkb=trapz(T,bkk);
+    Fourier=afourierTransform(k(ka),t(a),akka,bkkb);
+    Y(a)=Y(a)+Fourier;
+    
+end
+    Y(a)=Y(a)./2;
+end
+
+
+
+m1=0:0.01:4;
+m2=4:0.01:8;
+m3=8:0.01:12;
+m4=12:0.01:16;
+m5=16:0.01:20;
+
+for po=1:length(m1)
+    resulttt(po)=triangular(m1(po));
+end
+
+
+figure
+hold on
+plot(m1,resulttt)
+hold on
+plot(m2,resulttt)
+hold on
+plot(m3,resulttt)
+hold on
+plot(m4,resulttt)
+hold on
+plot(m5,resulttt)
+grid on
+hold on
+plot(t,Y)
+
+ylabel('Y'); xlabel('t'); grid on;
+title('Fourier Expansion of v(t), N=3');
+
+
+% ========================================================
+
+t=0:0.01:20;
+k=1:5;
+
+for a = 1:length(t)
+    a_0=0.5;
+    Y(a)=0;
+    
+for ka = 1:length(k)
+    T= 0:0.01:4;
+    for Ta = 1:length(T)
+    akk(Ta)=tCoefficientak(k(ka),T(Ta));
+    end
+    TT=0:0.01:4;
+    akka=trapz(TT,akk);
+    for Tb = 1:length(T)
+    bkk(Tb)=tCoefficientbk(k(ka),T(Tb));
+    end
+    bkkb=trapz(TT,bkk);
+    Fourier=afourierTransform(k(ka),t(a),akka,bkkb);
+    Y(a)=Y(a)+Fourier;
+end
+    Y(a)=Y(a)./2;
+end
+
+
+
+m1=0:0.01:4;
+m2=4:0.01:8;
+m3=8:0.01:12;
+m4=12:0.01:16;
+m5=16:0.01:20;
+
+for po=1:length(m1)
+    resulttt(po)=triangular(m1(po));
+end
+
+figure
+hold on
+plot(m1,resulttt)
+hold on
+plot(m2,resulttt)
+hold on
+plot(m3,resulttt)
+hold on
+plot(m4,resulttt)
+hold on
+plot(m5,resulttt)
+grid on
+hold on
+plot(t,Y)
+
+ylabel('Y'); xlabel('t'); grid on;
+title('Fourier Expansion of v(t), N=5');
+
+% ========================================================
+
+t=0:0.01:20;
+k=1:10;
+
+for a = 1:length(t)
+    a_0=0.5;
+    Y(a)=0;
+    
+for ka = 1:length(k)
+    T= 0:0.01:4;
+    for Ta = 1:length(T)
+    akk(Ta)=tCoefficientak(k(ka),T(Ta));
+    end
+    TT=0:0.01:4;
+    akka=trapz(TT,akk);
+    for Tb = 1:length(T)
+    bkk(Tb)=tCoefficientbk(k(ka),T(Tb));
+    end
+    bkkb=trapz(TT,bkk);
+    Fourier=afourierTransform(k(ka),t(a),akka,bkkb);
+    Y(a)=Y(a)+Fourier;
+end
+     Y(a)=Y(a)./2;
+end
+
+
+
+m1=0:0.01:4;
+m2=4:0.01:8;
+m3=8:0.01:12;
+m4=12:0.01:16;
+m5=16:0.01:20;
+
+for po=1:length(m1)
+    resulttt(po)=triangular(m1(po));
+end
+
+figure
+hold on
+plot(m1,resulttt)
+hold on
+plot(m2,resulttt)
+hold on
+plot(m3,resulttt)
+hold on
+plot(m4,resulttt)
+hold on
+plot(m5,resulttt)
+grid on
+hold on
+plot(t,Y)
+
+ylabel('Y'); xlabel('t'); grid on;
+title('Fourier Expansion of v(t), N=10');
+
+% ========================================================
+
+t=0:0.01:20;
+k=1:50;
+
+for a = 1:length(t)
+    a_0=0.5;
+    Y(a)=0;
+    
+for ka = 1:length(k)
+    T= 0:0.01:4;
+    for Ta = 1:length(T)
+    akk(Ta)=tCoefficientak(k(ka),T(Ta));
+    end
+    TT=0:0.01:4;
+    akka=trapz(TT,akk);
+    for Tb = 1:length(T)
+    bkk(Tb)=tCoefficientbk(k(ka),T(Tb));
+    end
+    bkkb=trapz(TT,bkk);
+    Fourier=afourierTransform(k(ka),t(a),akka,bkkb);
+    Y(a)=Y(a)+Fourier;
+end
+    Y(a)=Y(a)./2;
+end
+
+
+
+m1=0:0.01:4;
+m2=4:0.01:8;
+m3=8:0.01:12;
+m4=12:0.01:16;
+m5=16:0.01:20;
+
+for po=1:length(m1)
+    resulttt(po)=triangular(m1(po));
+end
+
+figure
+hold on
+plot(m1,resulttt)
+hold on
+plot(m2,resulttt)
+hold on
+plot(m3,resulttt)
+hold on
+plot(m4,resulttt)
+hold on
+plot(m5,resulttt)
+grid on
+hold on
+plot(t,Y)
+
+ylabel('Y'); xlabel('t'); grid on;
+title('Fourier Expansion of v(t), N=50');
+
+
+
+
+
+
+
+
+% ========================================================
+
+
+
+
+
+function result= Coefficientak(k,T)
+    if (T <= 9)&&(T >= 0)
+        result = 2./13.*7.*cos(2.*pi./13.*k.*T);
+    elseif (T <= 13)&&(T > 9)
+        result = 0;
+    end
+end
+
+function result= Coefficientbk(k,T)
+    if (T <= 9)&&(T >= 0)
+        result = 2./13.*7.*sin(2.*pi./13.*k.*T);
+    elseif (T <= 13)&&(T > 9)
+        result = 0;
+    end
+end
+
+function result= tCoefficientak(k,T)
+ if ((T>=0)&&(T<=2))
+        result = (1-T).*cos(2.*pi.*0.25.*k.*T);
+ elseif ((T>2)&&(T<=4))
+        result = (T-3).*cos(2.*pi.*0.25.*k.*T);
+ end
+end
+
+
+
+function result= tCoefficientbk(k,T)
+ if ((T>=0)&&(T<=2))
+        result = (1-T).*sin(2.*pi.*0.25.*k.*T);
+ elseif ((T>2)&&(T<=4))
+        result = (T-3).*sin(2.*pi.*0.25.*k.*T);
+ end
+end
+
+
+
+function result=fourierTransform(k,t,a_k,b_k)
+result = a_k.*cos(2.*pi./13.*k.*t)+b_k.*sin(2.*pi./13.*k.*t);
+end
+
+
+function result= periodic_function(t,k)
+    if (t <= (13.*k+9))&&(t >= (13.*k))
+        result = 7;
+    elseif (t < ((k+1).*13))&&(t > (13.*k+9))
+        result = 0;    
+    end
+end
+
+function result1=triangular(t)
+    if ((t>=0)&&(t<=2))
+        result1 = 1-t;
+    elseif ((t>=2)&&(t<=4))
+        result1 = t-3;    
+    end
+end
+
+function result=afourierTransform(k,t,a_k,b_k)
+result = a_k.*cos(2.*pi./4.*k.*t)+b_k.*sin(2.*pi./4.*k.*t);
+end
